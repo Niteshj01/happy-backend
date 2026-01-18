@@ -10,6 +10,7 @@ from typing import List, Optional
 import uuid
 from datetime import datetime
 from enum import Enum
+from email_service import send_appointment_confirmation_email
 
 
 ROOT_DIR = Path(__file__).parent
