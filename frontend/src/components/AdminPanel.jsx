@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
 import { 
   LogOut, Calendar, Users, Image as ImageIcon, Trash2, 
-  CheckCircle, XCircle, Clock, Upload, X
+  CheckCircle, XCircle, Clock, Upload, X, Key
 } from 'lucide-react';
 import { toast } from 'sonner';
 import axios from 'axios';
@@ -20,6 +21,12 @@ const AdminPanel = ({ onLogout }) => {
   const [imageTitle, setImageTitle] = useState('');
   const [imageCategory, setImageCategory] = useState('clinic');
   const [loading, setLoading] = useState(false);
+  const [showPasswordDialog, setShowPasswordDialog] = useState(false);
+  const [passwordForm, setPasswordForm] = useState({
+    oldPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
 
   useEffect(() => {
     loadData();
