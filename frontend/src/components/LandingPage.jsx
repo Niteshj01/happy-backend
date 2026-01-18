@@ -268,18 +268,18 @@ const LandingPage = () => {
             {services.map((service) => {
               const IconComponent = iconMap[service.icon] || Activity;
               return (
-                <Card key={service.id} className="border-2 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer">
+                <Card key={service.id} className="border-2 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-lg transition-all cursor-pointer bg-white dark:bg-gray-800 dark:border-gray-700">
                   <CardHeader>
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                      <IconComponent className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+                      <IconComponent className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <CardTitle className="text-xl">{service.title}</CardTitle>
+                    <CardTitle className="text-xl dark:text-white">{service.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-base">{service.description}</CardDescription>
+                    <CardDescription className="text-base dark:text-gray-400">{service.description}</CardDescription>
                     <Button 
                       variant="link" 
-                      className="mt-4 p-0 text-blue-600 hover:text-blue-700"
+                      className="mt-4 p-0 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
                       onClick={() => setSelectedService(service)}
                     >
                       Learn More <ChevronRight className="w-4 h-4 ml-1" />
