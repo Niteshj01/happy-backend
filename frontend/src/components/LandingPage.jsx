@@ -241,7 +241,11 @@ const LandingPage = () => {
                   </CardHeader>
                   <CardContent>
                     <CardDescription className="text-base">{service.description}</CardDescription>
-                    <Button variant="link" className="mt-4 p-0 text-blue-600 hover:text-blue-700">
+                    <Button 
+                      variant="link" 
+                      className="mt-4 p-0 text-blue-600 hover:text-blue-700"
+                      onClick={() => setSelectedService(service)}
+                    >
                       Learn More <ChevronRight className="w-4 h-4 ml-1" />
                     </Button>
                   </CardContent>
@@ -251,6 +255,70 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Service Details Modal */}
+      <Dialog open={selectedService !== null} onOpenChange={() => setSelectedService(null)}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          {selectedService && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold text-gray-900">
+                  {selectedService.title}
+                </DialogTitle>
+                <DialogDescription className="text-base text-gray-600 mt-2">
+                  {selectedService.description}
+                </DialogDescription>
+              </DialogHeader>
+              <div className="mt-6 space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Overview</h3>
+                  <p className="text-gray-600">{selectedService.details?.overview}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Benefits</h3>
+                  <ul className="space-y-2">
+                    {selectedService.details?.benefits.map((benefit, index) => (
+                      <li key={index} className="flex items-start space-x-2">
+                        <Star className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-600">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Procedure</h3>
+                  <p className="text-gray-600">{selectedService.details?.procedure}</p>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-gray-900 mb-1">Duration</h4>
+                    <p className="text-gray-600">{selectedService.details?.duration}</p>
+                  </div>
+                  <div className="bg-teal-50 p-4 rounded-lg">
+                    <h4 className="font-semibold text-gray-900 mb-1">Aftercare</h4>
+                    <p className="text-gray-600">{selectedService.details?.aftercare}</p>
+                  </div>
+                </div>
+                
+                <div className="pt-4 border-t">
+                  <Button 
+                    onClick={() => {
+                      setSelectedService(null);
+                      scrollToSection('contact');
+                    }}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  >
+                    Book Appointment for {selectedService.title}
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* Why Choose Us Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
