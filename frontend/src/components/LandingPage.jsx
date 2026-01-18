@@ -148,6 +148,13 @@ const LandingPage = () => {
               >
                 {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </Button>
+              <Button
+                variant="ghost"
+                onClick={() => navigate('/admin')}
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                Admin
+              </Button>
               <a href={`tel:${businessInfo.phone}`}>
                 <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
                   <Phone className="w-4 h-4 mr-2" />
