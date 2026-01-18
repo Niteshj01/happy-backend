@@ -500,8 +500,8 @@ const LandingPage = () => {
                     rows={4}
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-6">
-                  Book Your Appointment
+                <Button type="submit" size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg py-6" disabled={loading}>
+                  {loading ? 'Submitting...' : 'Book Your Appointment'}
                 </Button>
               </form>
             </CardContent>
