@@ -204,7 +204,7 @@ export const businessInfo = {
     saturday: '9:00 AM - 9:00 PM',
     sunday: '10:00 AM - 6:00 PM'
   },
-  googleMapsEmbed: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Happy+Teeth+Dental+Clinic+Kharar+Punjab&zoom=15&center=30.7408,76.6489'
+  googleMapsEmbed: 'https://www.google.com/maps?q=Happy+Teeth+Dental+Clinic+%26+Implant+Centre,+SCO+No.+33,+above+Barista,+Khanpur,+Kharar,+Punjab+140301&output=embed'
 };
 
 // Admin credentials (for frontend only - mock)
