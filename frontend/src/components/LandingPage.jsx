@@ -201,18 +201,18 @@ const LandingPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 via-white to-teal-50 py-20 md:py-32">
+      <section className="relative bg-gradient-to-br from-blue-50 via-white to-teal-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 py-20 md:py-32 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <Star className="w-4 h-4 fill-blue-700" />
+              <div className="inline-flex items-center space-x-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <Star className="w-4 h-4 fill-blue-700 dark:fill-blue-300" />
                 <span>5.0 Rating | 178+ Happy Patients</span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                 Experience World-Class Dental Care in Kharar
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
                 {businessInfo.tagline}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -228,7 +228,7 @@ const LandingPage = () => {
                   <Button 
                     size="lg" 
                     variant="outline" 
-                    className="w-full sm:w-auto border-2 border-blue-600 text-blue-600 hover:bg-blue-50 text-lg px-8 py-6"
+                    className="w-full sm:w-auto border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 text-lg px-8 py-6"
                   >
                     <Phone className="w-5 h-5 mr-2" />
                     {businessInfo.phone}
@@ -237,12 +237,12 @@ const LandingPage = () => {
               </div>
               <div className="mt-8 flex flex-wrap gap-6">
                 <div className="flex items-center space-x-2">
-                  <Award className="w-5 h-5 text-teal-600" />
-                  <span className="text-sm font-medium text-gray-700">Best Dental Clinic in Kharar</span>
+                  <Award className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Best Dental Clinic in Kharar</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Zap className="w-5 h-5 text-teal-600" />
-                  <span className="text-sm font-medium text-gray-700">State-of-the-Art Technology</span>
+                  <Zap className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">State-of-the-Art Technology</span>
                 </div>
               </div>
             </div>
@@ -258,11 +258,11 @@ const LandingPage = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
+      <section id="services" className="py-20 bg-white dark:bg-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-lg text-gray-600">Comprehensive dental care tailored to your needs</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Services</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">Comprehensive dental care tailored to your needs</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => {
