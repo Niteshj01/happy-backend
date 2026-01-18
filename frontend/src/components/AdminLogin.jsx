@@ -71,9 +71,6 @@ const AdminLogin = ({ onLogin }) => {
             <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={loading}>
               {loading ? 'Logging in...' : 'Login'}
             </Button>
-            <p className="text-xs text-gray-500 text-center mt-4">
-              Default: username: <strong>admin</strong>, password: <strong>admin123</strong>
-            </p>
           </form>
         </CardContent>
       </Card>
