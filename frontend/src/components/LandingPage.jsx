@@ -7,12 +7,17 @@ import {
   Phone, Mail, MapPin, Clock, Star, Award, Zap, Heart, 
   Shield, Sparkles, Activity, Menu, X, ChevronRight
 } from 'lucide-react';
-import { businessInfo, services, whyChooseUs, mockReviews, saveAppointment, getStoredGalleryImages } from '../mock';
+import { businessInfo, services, whyChooseUs, mockReviews } from '../mock';
 import { toast } from 'sonner';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const LandingPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [galleryImages, setGalleryImages] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -24,8 +29,18 @@ const LandingPage = () => {
   });
 
   useEffect(() => {
-    setGalleryImages(getStoredGalleryImages());
+    fetchGalleryImages();
   }, []);
+
+  const fetchGalleryImages = async () => {
+    try {
+      const response = await axios.get(`${API}/gallery`);
+      setGalleryImages(response.data);
+    } catch (error) {
+      console.error('Error fetching gallery images:', error);
+      toast.error('Failed to load gallery images');
+    }
+  };
 
   const iconMap = {
     tooth: Activity,
@@ -41,23 +56,32 @@ const LandingPage = () => {
     'map-pin': MapPin
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.phone || !formData.date || !formData.service) {
       toast.error('Please fill in all required fields');
       return;
     }
-    saveAppointment(formData);
-    toast.success('Appointment request submitted successfully! We will contact you soon.');
-    setFormData({
-      name: '',
-      phone: '',
-      email: '',
-      date: '',
-      time: '',
-      service: '',
-      message: ''
-    });
+    
+    setLoading(true);
+    try {
+      await axios.post(`${API}/appointments`, formData);
+      toast.success('Appointment request submitted successfully! We will contact you soon.');
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        date: '',
+        time: '',
+        service: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error creating appointment:', error);
+      toast.error('Failed to submit appointment. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const scrollToSection = (id) => {
