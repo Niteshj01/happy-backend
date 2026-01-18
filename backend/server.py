@@ -103,6 +103,22 @@ async def update_appointment_status(appointment_id: str, status_update: Appointm
     )
     
     updated_appointment = await db.appointments.find_one({"id": appointment_id})
+    
+    # Send confirmation email if status is confirmed and email exists
+    if status_update.status.value == "confirmed" and updated_appointment.get("email"):
+        try:
+            email_sent = send_appointment_confirmation_email(
+                appointment_data=updated_appointment,
+                recipient_email=updated_appointment["email"]
+            )
+            if email_sent:
+                logger.info(f"Confirmation email sent for appointment {appointment_id}")
+            else:
+                logger.warning(f"Email not sent for appointment {appointment_id} - SMTP not configured")
+        except Exception as e:
+            # Don't fail the request if email fails
+            logger.error(f"Error sending email for appointment {appointment_id}: {str(e)}")
+    
     return Appointment(**updated_appointment)
 
 
