@@ -204,7 +204,7 @@ export const businessInfo = {
     saturday: '9:00 AM - 9:00 PM',
     sunday: '10:00 AM - 6:00 PM'
   },
-  googleMapsEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.1234567890!2d76.6489!3d30.7408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDQ0JzI3LjAiTiA3NsKwMzgnNTYuMCJF!5e0!3m2!1sen!2sin!4v1234567890'
+  googleMapsEmbed: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Happy+Teeth+Dental+Clinic+Kharar+Punjab&zoom=15&center=30.7408,76.6489'
 };
 
 // Admin credentials (for frontend only - mock)
