@@ -658,7 +658,15 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2024 Happy Teeth Dental Clinic. All rights reserved.</p>
+            <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+              <p>&copy; 2024 Happy Teeth Dental Clinic. All rights reserved.</p>
+              <button 
+                onClick={() => navigate('/admin')}
+                className="text-gray-500 hover:text-gray-300 text-xs transition-colors"
+              >
+                Staff Login
+              </button>
+            </div>
           </div>
         </div>
       </footer>
