@@ -6,14 +6,11 @@ import {
   LogOut, Calendar, Users, Image as ImageIcon, Trash2, 
   CheckCircle, XCircle, Clock, Upload, X
 } from 'lucide-react';
-import { 
-  getStoredAppointments, 
-  updateAppointmentStatus, 
-  getStoredGalleryImages,
-  saveGalleryImage,
-  deleteGalleryImage 
-} from '../mock';
 import { toast } from 'sonner';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const AdminPanel = ({ onLogout }) => {
   const [activeTab, setActiveTab] = useState('appointments');
@@ -22,14 +19,24 @@ const AdminPanel = ({ onLogout }) => {
   const [imageUploadUrl, setImageUploadUrl] = useState('');
   const [imageTitle, setImageTitle] = useState('');
   const [imageCategory, setImageCategory] = useState('clinic');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadData();
   }, []);
 
-  const loadData = () => {
-    setAppointments(getStoredAppointments());
-    setGalleryImages(getStoredGalleryImages());
+  const loadData = async () => {
+    try {
+      const [appointmentsRes, galleryRes] = await Promise.all([
+        axios.get(`${API}/appointments`),
+        axios.get(`${API}/gallery`)
+      ]);
+      setAppointments(appointmentsRes.data);
+      setGalleryImages(galleryRes.data);
+    } catch (error) {
+      console.error('Error loading data:', error);
+      toast.error('Failed to load data');
+    }
   };
 
   const handleLogout = () => {
@@ -38,35 +45,54 @@ const AdminPanel = ({ onLogout }) => {
     toast.success('Logged out successfully');
   };
 
-  const handleStatusChange = (id, status) => {
-    updateAppointmentStatus(id, status);
-    loadData();
-    toast.success(`Appointment ${status}`);
+  const handleStatusChange = async (id, status) => {
+    try {
+      await axios.patch(`${API}/appointments/${id}/status`, { status });
+      loadData();
+      toast.success(`Appointment ${status}`);
+    } catch (error) {
+      console.error('Error updating status:', error);
+      toast.error('Failed to update appointment status');
+    }
   };
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     e.preventDefault();
     if (!imageUploadUrl || !imageTitle) {
       toast.error('Please fill in all fields');
       return;
     }
-    saveGalleryImage({
-      url: imageUploadUrl,
-      title: imageTitle,
-      category: imageCategory
-    });
-    setImageUploadUrl('');
-    setImageTitle('');
-    setImageCategory('clinic');
-    loadData();
-    toast.success('Image added to gallery');
+    
+    setLoading(true);
+    try {
+      await axios.post(`${API}/gallery`, {
+        url: imageUploadUrl,
+        title: imageTitle,
+        category: imageCategory
+      });
+      setImageUploadUrl('');
+      setImageTitle('');
+      setImageCategory('clinic');
+      loadData();
+      toast.success('Image added to gallery');
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      toast.error('Failed to add image');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleDeleteImage = (id) => {
+  const handleDeleteImage = async (id) => {
     if (window.confirm('Are you sure you want to delete this image?')) {
-      deleteGalleryImage(id);
-      loadData();
-      toast.success('Image deleted');
+      try {
+        await axios.delete(`${API}/gallery/${id}`);
+        loadData();
+        toast.success('Image deleted');
+      } catch (error) {
+        console.error('Error deleting image:', error);
+        toast.error('Failed to delete image');
+      }
     }
   };
 
