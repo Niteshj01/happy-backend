@@ -364,23 +364,23 @@ const LandingPage = () => {
       </Dialog>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
-            <p className="text-lg text-gray-600">What makes us the best dental clinic in Kharar</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Why Choose Us</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">What makes us the best dental clinic in Kharar</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {whyChooseUs.map((item) => {
               const IconComponent = iconMap[item.icon] || Award;
               return (
                 <div key={item.id} className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <IconComponent className="w-6 h-6 text-teal-600" />
+                  <div className="w-12 h-12 bg-teal-100 dark:bg-teal-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <IconComponent className="w-6 h-6 text-teal-600 dark:text-teal-400" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400">{item.description}</p>
                   </div>
                 </div>
               );
@@ -390,7 +390,7 @@ const LandingPage = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-white">
+      <section id="about" className="py-20 bg-white dark:bg-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -401,19 +401,19 @@ const LandingPage = () => {
               />
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Happy Teeth Dental Clinic</h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">About Happy Teeth Dental Clinic</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
                 Welcome to Happy Teeth Dental Clinic & Implant Centre, your premier destination for comprehensive dental care in Kharar. Our expert team, led by the best dentist in Kharar, offers exceptional services, including the best dental implants, cosmetic dentistry, best orthodontics treatment, and general oral care.
               </p>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
                 With state-of-the-art technology and a patient-centric approach, we provide personalized and comfortable treatments. We pride ourselves on being the best dental clinic in Kharar, ensuring a radiant and healthy smile for every patient.
               </p>
               <div className="flex items-center space-x-2 mb-4">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star key={star} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
                 ))}
-                <span className="text-xl font-bold text-gray-900 ml-2">5.0</span>
-                <span className="text-gray-600">(178 reviews)</span>
+                <span className="text-xl font-bold text-gray-900 dark:text-white ml-2">5.0</span>
+                <span className="text-gray-600 dark:text-gray-400">(178 reviews)</span>
               </div>
             </div>
           </div>
@@ -421,25 +421,25 @@ const LandingPage = () => {
       </section>
 
       {/* Reviews Section */}
-      <section id="reviews" className="py-20 bg-gray-50">
+      <section id="reviews" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Patients Say</h2>
-            <p className="text-lg text-gray-600">Real reviews from real patients</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">What Our Patients Say</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">Real reviews from real patients</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {mockReviews.map((review) => (
-              <Card key={review.id} className="border-2">
+              <Card key={review.id} className="border-2 bg-white dark:bg-gray-900 dark:border-gray-700">
                 <CardHeader>
                   <div className="flex items-center space-x-1 mb-2">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <CardTitle className="text-lg">{review.name}</CardTitle>
+                  <CardTitle className="text-lg dark:text-white">{review.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">{review.text}</p>
+                  <p className="text-gray-600 dark:text-gray-400">{review.text}</p>
                 </CardContent>
               </Card>
             ))}
@@ -448,11 +448,11 @@ const LandingPage = () => {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-20 bg-white">
+      <section id="gallery" className="py-20 bg-white dark:bg-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Clinic Gallery</h2>
-            <p className="text-lg text-gray-600">Take a look at our modern facilities</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Clinic Gallery</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">Take a look at our modern facilities</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {galleryImages.slice(0, 6).map((image) => (
