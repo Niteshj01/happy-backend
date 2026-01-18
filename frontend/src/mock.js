@@ -5,37 +5,115 @@ export const services = [
     id: '1',
     title: 'Dental Implants',
     description: 'Permanent solution for missing teeth with advanced implant technology',
-    icon: 'tooth'
+    icon: 'tooth',
+    details: {
+      overview: 'Dental implants are the gold standard for replacing missing teeth. They provide a permanent, natural-looking solution that functions just like your natural teeth.',
+      benefits: [
+        'Permanent and durable solution',
+        'Looks and feels like natural teeth',
+        'Preserves jawbone and facial structure',
+        'No impact on surrounding teeth',
+        'High success rate (95-98%)'
+      ],
+      procedure: 'The implant procedure involves surgically placing a titanium post into the jawbone, which acts as an artificial tooth root. After healing (3-6 months), a custom crown is attached to complete your smile.',
+      duration: '3-6 months (including healing time)',
+      aftercare: 'Maintain good oral hygiene, regular dental checkups, and avoid hard foods during healing period.'
+    }
   },
   {
     id: '2',
     title: 'Invisalign/Orthodontics',
     description: 'Straighten your teeth discreetly with clear aligners and expert orthodontic care',
-    icon: 'smile'
+    icon: 'smile',
+    details: {
+      overview: 'Invisalign uses a series of custom-made, clear aligners to gradually straighten your teeth without traditional metal braces. Perfect for adults and teens who want discreet treatment.',
+      benefits: [
+        'Virtually invisible aligners',
+        'Removable for eating and cleaning',
+        'More comfortable than traditional braces',
+        'Predictable results with 3D treatment planning',
+        'Fewer dental visits required'
+      ],
+      procedure: 'After initial consultation and 3D scanning, custom aligners are created. You wear each set for 1-2 weeks before moving to the next, gradually shifting teeth into position.',
+      duration: '12-18 months (average treatment time)',
+      aftercare: 'Wear retainers as prescribed, maintain aligner hygiene, and attend regular progress checkups.'
+    }
   },
   {
     id: '3',
     title: 'Cosmetic Dentistry',
     description: 'Transform your smile with veneers, whitening, and aesthetic treatments',
-    icon: 'sparkles'
+    icon: 'sparkles',
+    details: {
+      overview: 'Cosmetic dentistry encompasses various procedures designed to improve the appearance of your teeth and smile, including veneers, bonding, whitening, and smile makeovers.',
+      benefits: [
+        'Enhanced smile aesthetics',
+        'Boost confidence and self-esteem',
+        'Correct multiple dental imperfections',
+        'Long-lasting results',
+        'Minimal to no discomfort'
+      ],
+      procedure: 'Treatments vary based on your needs: teeth whitening (1 visit), veneers (2-3 visits), bonding (1 visit). Each procedure is customized to achieve your desired smile transformation.',
+      duration: 'Varies by treatment (1-3 visits)',
+      aftercare: 'Avoid staining foods/drinks after whitening, maintain good oral hygiene, and schedule regular checkups.'
+    }
   },
   {
     id: '4',
     title: 'Endodontics',
     description: 'Root canal treatments performed with precision and minimal discomfort',
-    icon: 'activity'
+    icon: 'activity',
+    details: {
+      overview: 'Endodontics focuses on treating the inner pulp of teeth. Root canal therapy saves infected or damaged teeth that would otherwise need extraction.',
+      benefits: [
+        'Saves your natural tooth',
+        'Relieves severe tooth pain',
+        'Modern techniques minimize discomfort',
+        'High success rate',
+        'More cost-effective than extraction and replacement'
+      ],
+      procedure: 'The infected pulp is removed, the root canal is cleaned and disinfected, then sealed with a filling. A crown is often placed to protect and strengthen the tooth.',
+      duration: '1-2 visits (60-90 minutes each)',
+      aftercare: 'Take prescribed medications, avoid chewing on treated tooth until crown is placed, maintain good oral hygiene.'
+    }
   },
   {
     id: '5',
     title: 'General Dentistry',
     description: 'Comprehensive oral care including cleanings, fillings, and preventive treatments',
-    icon: 'shield'
+    icon: 'shield',
+    details: {
+      overview: 'General dentistry covers all aspects of oral health maintenance, including routine checkups, cleanings, fillings, extractions, and preventive care for the whole family.',
+      benefits: [
+        'Prevents serious dental problems',
+        'Early detection of issues',
+        'Maintains overall oral health',
+        'Professional cleaning removes plaque and tartar',
+        'Suitable for all ages'
+      ],
+      procedure: 'Regular visits every 6 months include examination, professional cleaning, X-rays (as needed), and treatment of any issues like cavities or gum disease.',
+      duration: '30-60 minutes per visit',
+      aftercare: 'Brush twice daily, floss daily, use mouthwash, and maintain regular 6-month checkup schedule.'
+    }
   },
   {
     id: '6',
     title: 'Emergency Dental Care',
     description: 'Same-day appointments for urgent dental issues',
-    icon: 'clock'
+    icon: 'clock',
+    details: {
+      overview: 'Emergency dental care addresses urgent situations like severe toothaches, broken teeth, knocked-out teeth, lost fillings, or dental injuries requiring immediate attention.',
+      benefits: [
+        'Same-day appointments available',
+        'Immediate pain relief',
+        'Prevents complications',
+        'Expert urgent care',
+        'Open extended hours'
+      ],
+      procedure: 'Call immediately for emergency situations. Our team will assess and provide prompt treatment to address pain, infection, or trauma. Treatment varies based on the emergency.',
+      duration: 'Immediate assessment and treatment',
+      aftercare: 'Follow post-treatment instructions, take prescribed medications, and schedule follow-up appointment if needed.'
+    }
   }
 ];
 
