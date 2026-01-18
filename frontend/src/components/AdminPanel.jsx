@@ -399,7 +399,7 @@ const AdminPanel = ({ onLogout }) => {
           <DialogHeader>
             <DialogTitle>Change Admin Password</DialogTitle>
             <DialogDescription>
-              Enter your current password and choose a new password
+              Enter your current password and choose a new secure password
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handlePasswordChange} className="space-y-4 mt-4">
@@ -434,11 +434,6 @@ const AdminPanel = ({ onLogout }) => {
                 required
                 minLength={6}
               />
-            </div>
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
-              <p className="text-xs text-yellow-800">
-                <strong>Important:</strong> After changing password, you'll need to update the ADMIN_PASSWORD_HASH in your .env file and restart the backend server.
-              </p>
             </div>
             <div className="flex space-x-3">
               <Button type="submit" className="flex-1 bg-blue-600 hover:bg-blue-700" disabled={loading}>
