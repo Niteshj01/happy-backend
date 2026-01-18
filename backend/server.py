@@ -11,6 +11,7 @@ import uuid
 from datetime import datetime
 from enum import Enum
 from email_service import send_appointment_confirmation_email
+from auth_service import verify_admin_credentials, change_admin_password, get_password_hash
 
 
 ROOT_DIR = Path(__file__).parent
