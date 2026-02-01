@@ -15,7 +15,7 @@ def send_appointment_confirmation_email(
     Send appointment confirmation email to patient
     Returns True if email sent successfully, False otherwise
     """
-    
+    logger.info("Sending appointment confirmation email...")
     # Check if SMTP credentials are configured
     smtp_server = os.environ.get('SMTP_SERVER', 'smtp.gmail.com')
     smtp_port = int(os.environ.get('SMTP_PORT', '587'))
@@ -26,7 +26,7 @@ def send_appointment_confirmation_email(
     if not smtp_email or not smtp_password:
         logger.warning("SMTP credentials not configured. Email notification skipped.")
         return False
-    
+    logger.info("SMTP credentials configured. Sending email...")
     try:
         # Create message
         message = MIMEMultipart("alternative")

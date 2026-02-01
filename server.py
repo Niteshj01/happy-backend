@@ -6,7 +6,7 @@ import os
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field
-from typing import List, Optional
+from typing import List, Optional, Dict
 import uuid
 from datetime import datetime
 from enum import Enum
@@ -93,6 +93,10 @@ class AdminPasswordChangeResponse(BaseModel):
     message: str
     new_password_hash: Optional[str] = None
 
+class EmailRequest(BaseModel):
+    email: str
+    data: Dict[str, str]
+
 
 # Appointment Routes
 @api_router.post("/appointments", response_model=Appointment)
@@ -162,6 +166,25 @@ async def delete_gallery_image(image_id: str):
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Image not found")
     return {"message": "Image deleted successfully"}
+
+
+@api_router.post("/send-email")
+async def send_email(request: EmailRequest):
+    """
+    Send an email using the provided data and email address.
+    """
+    try:
+        success = send_appointment_confirmation_email(
+            appointment_data=request.data,
+            recipient_email=request.email
+        )
+        if success:
+             return {"message": "Email sent successfully", "success": True}
+        else:
+             raise HTTPException(status_code=500, detail="Failed to send email")
+    except Exception as e:
+        logger.error(f"Error in /send-email: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # Health check route
